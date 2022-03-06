@@ -1,3 +1,5 @@
+# This is a comment
+
 class Piece:
     def __init__(self, colour):
         self.colour = colour # colour = 0 if white, 1 if black

@@ -34,7 +34,7 @@ class Pawn:
 
     def get_moves(self, board, r, c):
         ret = []
-        if colour == 0: # Black
+        if self.colour == 0: # Black
             if r+1 < len(board):
                 ret = [(r+1, c)]
                 a = board[r+1][c-1]

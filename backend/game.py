@@ -10,7 +10,28 @@ class Piece:
     def get_moves(self, board, r, c):
         return []
 
+    def __str__(self):
+        return "? "
+
+class Board:
+    def __init__(self, rows, columns):
+        self.board = [[None for c in range(columns)] for r in range(rows)]
+
+    def __str__(self):
+        ret = ""
+        for r in self.board:
+            for p in r:
+                ret += str(p) if p != None else "_ "
+            ret += "\n"
+        return ret
+
+    def __getitem__(self, key):
+        return self.board[key]
+
 class Pawn:
+    def __str__(self):
+        return "p "
+
     def get_moves(self, board, r, c):
         ret = []
         if colour == 0: # Black

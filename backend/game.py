@@ -1,3 +1,8 @@
+def in_board(r,c,rows,columns):
+    if a >= 0 and a <= c and b >= 0 and b <= r:
+        return True
+    return False
+
 class Piece:
     def __init__(self, colour):
         self.colour = colour # colour = 0 if white, 1 if black
@@ -54,3 +59,54 @@ class Pawn:
                     ret.append((r-1,c-1))
                 if c+1 < len(board[0]) and b != None and b.colour != self.colour:
                     ret.append((r-1,c+1))
+    
+class Rook:
+    def __str__(self):
+        return "r "
+
+    def get_moves(self, board, r, c):
+        ret = []
+
+        # To the right of the rook:
+        if in_board(r, c+1, len(board), len(board[0])) == True:
+            for x range(c+1,len(board[0])):
+                if board[r][x] == None:
+                    ret.append(square[r][x])
+                elif board[r][x].colour != self.colour:
+                    ret.append(square[r][x])
+                    break
+                else:
+                    break
+
+        # To the left of the rook:
+        if in_board(r, c-1, len(board), len(board[0])) == True:
+            for x in range(c,0,-1):
+                if board[r][x] == None:
+                    ret.append(square[r][x])
+                elif board[r][x].colour != self.colour:
+                    ret.append(square[r][x])
+                    break
+                else:
+                    break
+
+        # Above the rook:
+        if in_board(r+1, c, len(board), len(board[0])) == True:
+            for y in range(r+1,len(board)):
+                if board[y][c] == None:
+                    ret.append(square[y][c])
+                elif board[y][c].colour != self.colour:
+                    ret.append(square[y][c])
+                    break
+                else:
+                    break
+
+        # Below the rook:
+        if in_board(r-1, c, len(board), len(board[0])) == True:
+            for y in range(r-1,0,-1):
+                if board[y][c] == None:
+                    ret.append(square[y][c])
+                elif board[y][c].colour != self.colour:
+                    ret.append(square[y][c])
+                    break
+                else:
+                    break

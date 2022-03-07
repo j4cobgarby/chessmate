@@ -31,7 +31,7 @@ class Board:
         return self.board[key]
 
     def in_board(self, r, c):
-        return r >= 0 and r < len(self.board) and c >= 0 and c < len(self.board[0]):
+        return r >= 0 and r < len(self.board) and c >= 0 and c < len(self.board[0])
 
 
 class Pawn(Piece):
@@ -41,7 +41,7 @@ class Pawn(Piece):
     def get_moves(self, board, r, c):
         # Add promotion and en passant
         ret = []
-        if colour == 0:  # Black
+        if self.colour == 0:  # Black
             if r + 1 < len(board):
                 ret = [(r + 1, c)]
                 a = board[r + 1][c - 1]

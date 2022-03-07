@@ -31,12 +31,10 @@ class Board:
         return self.board[key]
 
     def in_board(self, r, c):
-        if r >= 0 and r < len(self.board) and c >= 0 and c < len(self.board[0]):
-            return True
-        return False
+        return r >= 0 and r < len(self.board) and c >= 0 and c < len(self.board[0]):
 
 
-class Pawn:
+class Pawn(Piece):
     def __str__(self):
         return "p "
 
@@ -68,7 +66,7 @@ class Pawn:
         return ret
 
 
-class Rook:
+class Rook(Piece):
     def __str__(self):
         return "r "
 
@@ -76,7 +74,7 @@ class Rook:
         valid_squares = []
 
         # To the right of the rook:
-        if board.in_board(r, c + 1) == True:
+        if board.in_board(r, c + 1):
             for x in range(c + 1, len(board[0])):
                 if board[r][x] is None:
                     valid_squares.append((r,x))
@@ -87,7 +85,7 @@ class Rook:
                     break
 
         # To the left of the rook:
-        if board.in_board(r, c - 1) == True:
+        if board.in_board(r, c - 1):
             for x in range(c - 1, -1, -1):
                 if board[r][x] is None:
                     valid_squares.append((r,x))
@@ -98,7 +96,7 @@ class Rook:
                     break
 
         # Above the rook:
-        if board.in_board(r + 1, c, len(board), len(board[0])) == True:
+        if board.in_board(r + 1, c, len(board), len(board[0])):
             for y in range(r + 1, len(board)):
                 if board[y][c] is None:
                     valid_squares.append((y,c))
@@ -109,7 +107,7 @@ class Rook:
                     break
 
         # Below the rook:
-        if board.in_board(r - 1, c, len(board), len(board[0])) == True:
+        if board.in_board(r - 1, c, len(board), len(board[0])):
             for y in range(r - 1, -1, -1):
                 if board[y][c] is None:
                     valid_squares.append((y,c))

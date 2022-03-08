@@ -118,3 +118,60 @@ class Rook(Piece):
                     break
 
         return valid_squares
+
+class Bishop(Piece):
+    def __str__(self):
+        return "b "
+
+    def get_moves(self, board, r, c):
+        valid_squares = []
+
+        # Up and right:
+        if board.in_board(r + 1, c + 1):
+            max_dist = min(len(board)-c, len(board[0])-r) - 1
+            for i in range(1, max_dist):
+                if board[r+i][c+i] is None:
+                    valid_squares.append((r+i,c+i))
+                elif board[r+i][c+i].colour != self.colour:
+                    valid_squares.append((r+i,c+i))
+                    break
+                else:
+                    break
+
+        # Down and right:
+        if board.in_board(r + 1, c - 1):
+            max_dist = min(c, len(board[0])-r) - 1
+            for i in range(1, max_dist):
+                if board[r+i][c-i] is None:
+                    valid_squares.append((r+i,c-i))
+                elif board[r+i][c-i].colour != self.colour:
+                    valid_squares.append((r+i,c-i))
+                    break
+                else:
+                    break
+
+        # Down and left:
+        if board.in_board(r - 1, c - 1):
+            max_dist = min(c, r) - 1
+            for i in range(1, max_dist):
+                if board[r-i][c-i] is None:
+                    valid_squares.append((r-i,c-i))
+                elif board[r-i][c-i].colour != self.colour:
+                    valid_squares.append((r-i,c-i))
+                    break
+                else:
+                    break
+
+        # Up and left:
+        if board.in_board(r - 1, c + 1):
+            max_dist = min(len(board)-c, r) - 1
+            for i in range(1, max_dist):
+                if board[r-i][c+i] is None:
+                    valid_squares.append((r-i,c+i))
+                elif board[r-i][c+i].colour != self.colour:
+                    valid_squares.append((r-i,c+i))
+                    break
+                else:
+                    break
+
+        return valid_squares

@@ -1,0 +1,5 @@
+ErrorDocument 404 /404.htm
+
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !=443
+RewriteRule ^(.*)$ https://chess.olivermalkin.co.uk/$1 [R=301,L]

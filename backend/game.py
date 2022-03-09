@@ -289,7 +289,7 @@ class Basilisk(Piece):
                 if board[r+1][i] is None or board[r+1][i].colour != self.colour:
                     valid_squares.append((r+1,i))
                     
-        if board.in_board(r -1 1, c):
+        if board.in_board(r - 1, c):
             for i in range(0,len(board[0])-1):
                 if board[r-1][i] is None or board[r-11][i].colour != self.colour:
                     valid_squares.append((r-1,i))

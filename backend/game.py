@@ -119,6 +119,7 @@ class Rook(Piece):
 
         return valid_squares
 
+<<<<<<< HEAD
 class Bishop(Piece):
     def __str__(self):
         return "b "
@@ -173,5 +174,125 @@ class Bishop(Piece):
                     break
                 else:
                     break
+
+        return valid_squares
+
+class Queen(Piece):
+    def __str__(self):
+        return "q "
+
+    def get_moves(self, board, r, c):
+        valid_squares = []
+
+        # Right:
+        if board.in_board(r, c + 1):
+            for x in range(c + 1, len(board[0])):
+                if board[r][x] is None:
+                    valid_squares.append((r,x))
+                elif board[r][x].colour != self.colour:
+                    valid_squares.append((r,x))
+                    break
+                else:
+                    break
+
+        # Left:
+        if board.in_board(r, c - 1):
+            for x in range(c - 1, -1, -1):
+                if board[r][x] is None:
+                    valid_squares.append((r,x))
+                elif board[r][x].colour != self.colour:
+                    valid_squares.append((r,x))
+                    break
+                else:
+                    break
+
+        # Up:
+        if board.in_board(r + 1, c, len(board), len(board[0])):
+            for y in range(r + 1, len(board)):
+                if board[y][c] is None:
+                    valid_squares.append((y,c))
+                elif board[y][c].colour != self.colour:
+                    valid_squares.append((y,c))
+                    break
+                else:
+                    break
+
+        # Down:
+        if board.in_board(r - 1, c, len(board), len(board[0])):
+            for y in range(r - 1, -1, -1):
+                if board[y][c] is None:
+                    valid_squares.append((y,c))
+                elif board[y][c].colour != self.colour:
+                    valid_squares.append((y,c))
+                    break
+                else:
+                    break
+
+        # Up and right:
+        if board.in_board(r + 1, c + 1):
+            max_dist = min(len(board) - c, len(board[0]) - r) - 1
+            for i in range(1, max_dist):
+                if board[r + i][c + i] is None:
+                    valid_squares.append((r + i, c + i))
+                elif board[r + i][c + i].colour != self.colour:
+                    valid_squares.append((r + i, c + i))
+                    break
+                else:
+                    break
+
+        # Down and right:
+        if board.in_board(r + 1, c - 1):
+            max_dist = min(c, len(board[0]) - r) - 1
+            for i in range(1, max_dist):
+                if board[r + i][c - i] is None:
+                    valid_squares.append((r + i, c - i))
+                elif board[r + i][c - i].colour != self.colour:
+                    valid_squares.append((r + i, c - i))
+                    break
+                else:
+                    break
+
+        # Down and left:
+        if board.in_board(r - 1, c - 1):
+            max_dist = min(c, r) - 1
+            for i in range(1, max_dist):
+                if board[r - i][c - i] is None:
+                    valid_squares.append((r - i, c - i))
+                elif board[r - i][c - i].colour != self.colour:
+                    valid_squares.append((r - i, c - i))
+                    break
+                else:
+                    break
+
+        # Up and left:
+        if board.in_board(r - 1, c + 1):
+            max_dist = min(len(board) - c, r) - 1
+            for i in range(1, max_dist):
+                if board[r - i][c + i] is None:
+                    valid_squares.append((r - i, c + i))
+                elif board[r - i][c + i].colour != self.colour:
+                    valid_squares.append((r - i, c + i))
+                    break
+                else:
+                    break
+
+        return valid_squares
+
+class Basilisk(Piece):
+    def __str__(self):
+        return "B "
+
+    def get_moves(self, board, r, c):
+        valid_squares = []
+
+        if board.in_board(r + 1, c):
+            for i in range(0,len(board[0])-1):
+                if board[r+1][i] is None or board[r+1][i].colour != self.colour:
+                    valid_squares.append((r+1,i))
+
+        if board.in_board(r -1 1, c):
+            for i in range(0,len(board[0])-1):
+                if board[r-1][i] is None or board[r-11][i].colour != self.colour:
+                    valid_squares.append((r-1,i))
 
         return valid_squares

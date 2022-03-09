@@ -119,7 +119,6 @@ class Rook(Piece):
 
         return valid_squares
 
-<<<<<<< HEAD
 class Bishop(Piece):
     def __str__(self):
         return "b "
@@ -289,7 +288,7 @@ class Basilisk(Piece):
             for i in range(0,len(board[0])-1):
                 if board[r+1][i] is None or board[r+1][i].colour != self.colour:
                     valid_squares.append((r+1,i))
-
+                    
         if board.in_board(r -1 1, c):
             for i in range(0,len(board[0])-1):
                 if board[r-1][i] is None or board[r-11][i].colour != self.colour:

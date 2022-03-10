@@ -14,6 +14,12 @@ class Piece:
     def get_moves(self):
         return []
 
+    def move_to(self, new_r, new_c):
+        self.board[new_r][new_c] = self
+        self.board[self.r][self.c] = None
+        self.r = new_r
+        self.c = new_c
+
     def __str__(self):
         return "? "
 
@@ -38,6 +44,9 @@ class Board:
 
     def in_board(self, r, c):
         return r >= 0 and r < len(self.board) and c >= 0 and c < len(self.board[0])
+
+    def add_piece(self, piece):
+        self.board[piece.r][piece.c] = piece
 
 
 class Pawn(Piece):

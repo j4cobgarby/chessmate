@@ -69,7 +69,7 @@ class Pawn(Piece):
 
         else:  # Black
             if self.r - 1 >= 0:
-                ret = [(self.r - 1, selfc)]
+                ret = [(self.r - 1, self.c)]
                 a = self.board[self.r - 1][self.c - 1]
                 b = self.board[self.r - 1][self.c + 1]
 
@@ -113,7 +113,7 @@ class Rook(Piece):
         # Above the rook:
         if self.board.in_board(self.r + 1, self.c):
             for y in range(self.r + 1, len(self.board)):
-                if self.board[y][c] is None:
+                if self.board[y][self.c] is None:
                     valid_squares.append((y,self.c))
                 elif self.board[y][self.c].colour != self.colour:
                     valid_squares.append((y,self.c))
@@ -123,7 +123,7 @@ class Rook(Piece):
 
         # Below the rook:
         if self.board.in_board(self.r - 1, self.c):
-            for y in range(r - 1, -1, -1):
+            for y in range(self.r - 1, -1, -1):
                 if self.board[y][self.c] is None:
                     valid_squares.append((y,self.c))
                 elif self.board[y][self.c].colour != self.colour:

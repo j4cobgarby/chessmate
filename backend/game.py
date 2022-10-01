@@ -22,7 +22,7 @@ class Piece:
 
     def __str__(self):
         return "? "
-
+# test
 
 class Board:
     def __init__(self, rows, columns):
